@@ -5,7 +5,7 @@ import Button from "../Components/Button";
 import { useState } from "react";
 import { getNames } from "country-list";
 import { register } from "../Services/authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const degreeOptions = [
   { value: "mbbs", label: "MBBS" },
@@ -171,9 +171,15 @@ const RegisterForm = () => {
       <div className="bg-white rounded-2xl shadow-2xl p-14 max-w-xl backdrop-blur-sm bg-opacity-95">
         <div className="text-center mb-8">
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
-            {currentStep === 1
-              ? "Welcome Doctor! Register your details and start"
-              : "Enter your Educational details"}
+            {currentStep === 1 ? (
+              <>
+                Welcome Doctor!
+                <br />
+                Register your details and start
+              </>
+            ) : (
+              "Enter your Educational details"
+            )}
           </h1>
         </div>
 
@@ -209,6 +215,17 @@ const RegisterForm = () => {
             <Button onClick={handleStep1} disabled={!isStep1Valid()}>
               Continue
             </Button>
+            <div className="text-center mt-8 pt-6">
+              <p className="text-gray-600">
+                Do you have an account?{" "}
+                <Link
+                  to="/"
+                  className="text-[#1D267E] hover:text-[#151e6b] font-semibold transition-colors"
+                >
+                  login
+                </Link>
+              </p>
+            </div>
           </div>
         )}
 
