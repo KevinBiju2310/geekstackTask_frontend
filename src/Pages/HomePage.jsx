@@ -16,7 +16,7 @@ import salary from "../assets/salary.png";
 import profilepic from "../assets/profilepic.png";
 import tickIcon from "../assets/tickIcon.png";
 
-import { Home, ShoppingBag, Clock, MessageCircle } from "lucide-react";
+import { Home, ShoppingBag, MessageCircle } from "lucide-react";
 import { useSelector } from "react-redux";
 
 const HomePage = () => {
@@ -35,7 +35,7 @@ const HomePage = () => {
       name: "Richmond Hospital",
       message: "Hey hai...",
       avatar: Richmond,
-      messageCount: 1,
+      messageCount: 0,
       time: "10:20",
     },
     {
@@ -160,23 +160,23 @@ const HomePage = () => {
               <div className="flex overflow-x-auto gap-4 pb-2">
                 <div className="min-w-[200px] bg-gray-50 rounded-lg p-4 shadow-sm flex flex-col items-center text-center">
                   <ShoppingBag className="w-6 h-6 text-[#1D267E] mb-2" />
-                  <p className="text-sm text-gray-600">Location: Delhi</p>
-                  <p className="text-sm text-gray-600">Hospital: ABC Care</p>
+                  <p className="text-sm text-gray-600">Coimbatore</p>
+                  <p className="text-sm text-gray-600">12.5k + jobs</p>
                 </div>
                 <div className="min-w-[200px] bg-gray-50 rounded-lg p-4 shadow-sm flex flex-col items-center text-center">
                   <ShoppingBag className="w-6 h-6 text-[#1D267E] mb-2" />
-                  <p className="text-sm text-gray-600">Location: Mumbai</p>
-                  <p className="text-sm text-gray-600">Hospital: HealWell</p>
+                  <p className="text-sm text-gray-600">Chennai</p>
+                  <p className="text-sm text-gray-600">12.5k + jobs</p>
                 </div>
                 <div className="min-w-[200px] bg-gray-50 rounded-lg p-4 shadow-sm flex flex-col items-center text-center">
                   <ShoppingBag className="w-6 h-6 text-[#1D267E] mb-2" />
-                  <p className="text-sm text-gray-600">Location: Chennai</p>
-                  <p className="text-sm text-gray-600">Hospital: Medix</p>
+                  <p className="text-sm text-gray-600">Madurai</p>
+                  <p className="text-sm text-gray-600">12.5k + jobs</p>
                 </div>
                 <div className="min-w-[200px] bg-gray-50 rounded-lg p-4 shadow-sm flex flex-col items-center text-center">
                   <ShoppingBag className="w-6 h-6 text-[#1D267E] mb-2" />
-                  <p className="text-sm text-gray-600">Location: Bangalore</p>
-                  <p className="text-sm text-gray-600">Hospital: CareMax</p>
+                  <p className="text-sm text-gray-600">Thiruvananthapuram</p>
+                  <p className="text-sm text-gray-600">12.5k + jobs</p>
                 </div>
               </div>
             </div>
@@ -326,7 +326,6 @@ const HomePage = () => {
                           </span>
                         )}
                         <div className="flex items-center space-x-1 text-xs text-gray-500 mb-1">
-                          <Clock className="w-3 h-3" />
                           <span>{msg.time}</span>
                         </div>
                       </div>

@@ -19,7 +19,7 @@ const completionOptions = [
   { value: "no", label: "No" },
 ];
 
-const yearOptions = [
+const mbbsYearOptions = [
   { value: "1st year", label: "1st year" },
   { value: "2nd year", label: "2nd year" },
   { value: "3rd year", label: "3rd year" },
@@ -27,6 +27,14 @@ const yearOptions = [
   { value: "5th year", label: "5th year" },
   { value: "6th year", label: "6th year" },
   { value: "7th year", label: "7th year" },
+];
+
+const otherYearOptions = [
+  { value: "1st year", label: "1st year" },
+  { value: "2nd year", label: "2nd year" },
+  { value: "3rd year", label: "3rd year" },
+  { value: "4th year", label: "4th year" },
+  { value: "5th year", label: "5th year" },
 ];
 
 const pgdegreeOptions = [
@@ -283,7 +291,7 @@ const RegisterForm = () => {
             )}
             {formData.degree === "mbbs" && formData.completion === "no" && (
               <Dropdown
-                options={yearOptions}
+                options={mbbsYearOptions}
                 value={formData.year}
                 onChange={(e) =>
                   setFormData({ ...formData, year: e.target.value })
@@ -326,7 +334,7 @@ const RegisterForm = () => {
             {formData.degree === "pg" && formData.completion === "no" && (
               <>
                 <Dropdown
-                  options={yearOptions}
+                  options={otherYearOptions}
                   value={formData.year}
                   onChange={(e) =>
                     setFormData({ ...formData, year: e.target.value })
@@ -386,7 +394,7 @@ const RegisterForm = () => {
                     }
                   />
                   <Dropdown
-                    options={yearOptions}
+                    options={otherYearOptions}
                     value={formData.year}
                     onChange={(e) =>
                       setFormData({ ...formData, year: e.target.value })
@@ -500,7 +508,7 @@ const RegisterForm = () => {
                     }
                   />
                   <Dropdown
-                    options={yearOptions}
+                    options={otherYearOptions}
                     value={formData.year}
                     onChange={(e) =>
                       setFormData({ ...formData, year: e.target.value })
