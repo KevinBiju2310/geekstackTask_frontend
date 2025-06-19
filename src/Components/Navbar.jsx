@@ -2,13 +2,19 @@ import { Search, Bell, User, LogOut } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { clearUser } from "../Redux/userSlice";
+import { logout } from "../Services/authService";
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleLogout = () => {
-    dispatch(clearUser());
-    navigate("/");
+  const handleLogout = async () => {
+    try {
+      await logout();
+      dispatch(clearUser());
+      navigate("/");
+    } catch (error) {
+      console.error("Logout failed", error);
+    }
   };
   return (
     <nav className="bg-white shadow-sm border-b">

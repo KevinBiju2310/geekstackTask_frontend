@@ -31,3 +31,12 @@ export const register = async (formdata) => {
     );
   }
 };
+
+export const logout = async () => {
+  try {
+    const response = await axiosInstance.post("/logout");
+    return response;
+  } catch (error) {
+    console.error("Logout error", error);
+  }
+};
