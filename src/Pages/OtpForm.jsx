@@ -4,6 +4,8 @@ import OTPInput from "../Components/OtpInput";
 import Button from "../Components/Button";
 import { useLocation, useNavigate } from "react-router-dom";
 import { login, verifyOtp } from "../Services/authService";
+import { useDispatch } from "react-redux";
+import { setUser } from "../Redux/userSlice";
 
 const OtpForm = () => {
   const [otp, setOtp] = useState(["", "", "", "", "", ""]);
@@ -14,6 +16,7 @@ const OtpForm = () => {
   const inputRefs = useRef([]);
   const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const email = location.state?.email;
 
   useEffect(() => {
@@ -68,6 +71,8 @@ const OtpForm = () => {
     setError("");
     try {
       const response = await verifyOtp(email, otpCode);
+      console.log(response);
+      dispatch(setUser(response.data.user));
       if (response.status == 200) {
         navigate("/home");
       }

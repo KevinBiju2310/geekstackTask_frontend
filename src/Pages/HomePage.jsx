@@ -13,10 +13,14 @@ import fims from "../assets/fims.png";
 import department from "../assets/department.png";
 import location from "../assets/location.png";
 import salary from "../assets/salary.png";
+import profilepic from "../assets/profilepic.png";
+import tickIcon from "../assets/tickIcon.png";
 
 import { Home, ShoppingBag, Clock, MessageCircle } from "lucide-react";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const user = useSelector((state) => state.user.user);
   const messages = [
     {
       id: 1,
@@ -48,20 +52,24 @@ const HomePage = () => {
     <div className="min-h-screen bg-gray-50">
       <Navbar />
       <div className="flex flex-col md:flex-row gap-4 px-4 py-6 md:items-start">
-        <div className="basis-full md:basis-[30%] bg-red-200 p-4 rounded md:h-fit">
+        <div className="basis-full md:basis-[30%] p-4 rounded md:h-fit">
           <div className="bg-white rounded-lg p-4 shadow w-full flex flex-col items-center space-y-3">
             <img
-              src="https://via.placeholder.com/100"
+              src={profilepic}
               alt="Profile"
               className="bg-blue-400 w-24 h-24 rounded-full object-cover"
             />
             <div className="text-center">
-              <p className="text-lg font-semibold">Dr. Ayesha Sharma</p>
+              <p className="text-xl font-bold text-[#1D267E] flex justify-center items-center gap-1">
+                {user.firstName} {user.lastName}
+                <img src={tickIcon} alt="Verified" className="w-5 h-5" />
+              </p>
               <p className="text-sm text-gray-600">Duty Doctor</p>
               <p className="text-sm text-gray-600">
                 @KMCH Hospital, Coimbatore
               </p>
             </div>
+
             <button className="bg-[#1D267E] text-white px-8 py-3 rounded-3xl text-base font-medium hover:opacity-90 transition">
               Complete Profile
             </button>
@@ -107,7 +115,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="basis-full md:basis-[60%] bg-green-200 p-4 rounded">
+        <div className="basis-full md:basis-[60%] p-4 rounded">
           <div
             className="bg-[#9ea4db] h-96 rounded-xl shadow bg-cover bg-center"
             style={{
@@ -440,7 +448,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <div className="basis-full md:basis-[30%] bg-blue-200 p-4 rounded">
+        <div className="basis-full md:basis-[30%] p-4 rounded">
           <div className="bg-white rounded-3xl p-4 shadow w-full mb-4">
             <h3 className="text-xl font-bold text-gray-800 mb-4 ml-4">
               Where are you in your job <br />

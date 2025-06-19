@@ -1,7 +1,15 @@
-import React from "react";
-import { Search, Bell, User } from "lucide-react";
+import { Search, Bell, User, LogOut } from "lucide-react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { clearUser } from "../Redux/userSlice";
 
 const Navbar = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(clearUser());
+    navigate("/");
+  };
   return (
     <nav className="bg-white shadow-sm border-b">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -38,6 +46,13 @@ const Navbar = () => {
             </div>
             <Bell className="text-blue-700 w-5 h-5 cursor-pointer" />
             <User className="text-blue-700 w-5 h-5 cursor-pointer" />
+            <button
+              onClick={handleLogout}
+              className="flex items-center space-x-1 text-red-600 hover:text-red-800 font-medium"
+            >
+              <LogOut className="w-5 h-5" />
+              <span className="hidden md:inline">Logout</span>
+            </button>
           </div>
         </div>
       </div>

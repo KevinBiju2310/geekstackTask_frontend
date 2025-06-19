@@ -3,6 +3,7 @@ import LoginForm from "./Pages/LoginForm";
 import OtpForm from "./Pages/OtpForm";
 import RegisterForm from "./Pages/RegisterForm";
 import HomePage from "./Pages/HomePage";
+import ProtectedRoute from "./ProtectedRoute";
 
 const App = () => {
   return (
@@ -11,7 +12,14 @@ const App = () => {
         <Route path="/" element={<LoginForm />} />
         <Route path="/register" element={<RegisterForm />} />
         <Route path="/otp" element={<OtpForm />} />
-        <Route path="/home" element={<HomePage />} />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <HomePage />
+            </ProtectedRoute>
+          }
+        />
       </Routes>
     </Router>
   );
