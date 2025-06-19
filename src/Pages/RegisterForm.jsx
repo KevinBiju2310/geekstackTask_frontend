@@ -77,11 +77,17 @@ const RegisterForm = () => {
     fellowship: "",
   });
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
   const isStep1Valid = () => {
     return (
       formData.firstName.trim() &&
       formData.lastName.trim() &&
-      formData.email.trim()
+      formData.email.trim() &&
+      validateEmail(formData.email)
     );
   };
 
@@ -156,6 +162,10 @@ const RegisterForm = () => {
   };
 
   const handleStep1 = () => {
+    if (!validateEmail(formData.email)) {
+      setError("Please enter a valid email address");
+      return;
+    }
     if (isStep1Valid()) {
       setCurrentstep(2);
     }
@@ -296,7 +306,7 @@ const RegisterForm = () => {
                 onChange={(e) =>
                   setFormData({ ...formData, year: e.target.value })
                 }
-                placeholder="Select your expected completion year"
+                placeholder="Select your year"
               />
             )}
 
@@ -339,7 +349,7 @@ const RegisterForm = () => {
                   onChange={(e) =>
                     setFormData({ ...formData, year: e.target.value })
                   }
-                  placeholder="Select your expected completion year"
+                  placeholder="Select your year"
                 />
                 <Input
                   type="text"
@@ -399,7 +409,7 @@ const RegisterForm = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, year: e.target.value })
                     }
-                    placeholder="Select your expected completion year"
+                    placeholder="Select your year"
                   />
                   <Dropdown
                     options={specialityOptions}
@@ -513,7 +523,7 @@ const RegisterForm = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, year: e.target.value })
                     }
-                    placeholder="Select your expected completion year"
+                    placeholder="Select your year"
                   />
                   <Dropdown
                     options={fellowshipOptions}
